@@ -1,0 +1,21 @@
+{
+  "name": "samoa",
+  "description": "Samoa Clien Side",
+  "main": "server/server.js",
+  "authors": [
+    "Thingtrack"
+  ],
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular-material": "^1.1.1",
+    "angular-material-data-table": "^0.10.9"
+  }
+}
