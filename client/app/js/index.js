@@ -27,6 +27,28 @@ angular.module('SamoaApp', ['ngMaterial','md.data.table'])
 			$log.debug("Logout click event is done");
 		};
 
+		////////// Menu event handlers //////////
+		$scope.menuItemClick = function(event) {
+			if (event == 'USER') {
+				$log.debug("User Master click event is done");
+			}
+			else if (event == 'PRODUCT') {
+				$log.debug("Product Master click event is done");				
+			}
+			else if (event == 'INFRAESTRUCTURE') {
+				$log.debug("Infraestructure Management click event is done");								
+			}
+			else if (event == 'CANBUS') {
+				$log.debug("Can Bus Management click event is done");												
+			}
+			else if (event == 'VISUALIZE') {
+				$log.debug("Visualize Management click event is done");																
+			}
+			else if (event == 'ORDERS') {
+				$log.debug("orders Management click event is done");																
+			}
+		}		
+
 		////////// Quick Panel event handlers //////////
 		$scope.toggleLeft = buildDelayedToggler('left');
 		$scope.toggleRight = buildToggler('right');
