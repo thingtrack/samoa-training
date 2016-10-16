@@ -36,7 +36,7 @@ node_modules
 .idea
 
 # bower files
-client/app/bower_components
+client/bower_components
 
 # node-red temporal directory
 .nodered
