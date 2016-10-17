@@ -8,7 +8,18 @@ angular.module('SamoaApp', ['ngMaterial', 'ui.router', 'md.data.table'])
 
         // configure application routes
         $stateProvider
-            .state('product', {
+            .state('user', {
+                url: '/user',
+                data: {
+                    title: 'User Master'
+                },
+                views: {
+                    "content": {
+                        templateUrl: 'app/modules/user/user-template.html',
+                        controller: 'UserController'
+                    }
+                }
+            }).state('product', {
                 url: '/product',
                 data: {
                     title: 'Product Master'
@@ -19,9 +30,31 @@ angular.module('SamoaApp', ['ngMaterial', 'ui.router', 'md.data.table'])
                         controller: 'ProductController'
                     }
                 }
+            }).state('infraestructure', {
+                url: '/infraestructure',
+                data: {
+                    title: 'Infraestructure Management'
+                },
+                views: {
+                    "content": {
+                        templateUrl: 'app/modules/infraestructure/infraestructure-template.html',
+                        controller: 'InfraestructureController'
+                    }
+                }
+            }).state('canbus', {
+                url: '/canbus',
+                data: {
+                    title: 'CAN bus Management'
+                },
+                views: {
+                    "content": {
+                        templateUrl: 'app/modules/canbus/canbus-template.html',
+                        controller: 'CanbusController'
+                    }
+                }
             });
     }])
-    .controller('sampleController', ['$mdEditDialog', '$q', '$scope', '$log', '$timeout', '$mdSidenav', '$state', function ($mdEditDialog, $q, $scope, $log, $timeout, $mdSidenav, $state) {
+    .controller('sampleController', ['$mdEditDialog', '$q', '$scope', '$log', '$timeout', '$mdSidenav', '$state', '$interval', function ($mdEditDialog, $q, $scope, $log, $timeout, $mdSidenav, $state, $interval) {
         'use strict';
 
         $scope.customerName = 'Miguel Salinas';
@@ -46,6 +79,7 @@ angular.module('SamoaApp', ['ngMaterial', 'ui.router', 'md.data.table'])
         ////////// Menu event handlers //////////
         $scope.menuItemClick = function (event) {
             if (event == 'USER') {
+                $state.go('user');
                 $log.debug("User Master click event is done");
             }
             else if (event == 'PRODUCT') {
@@ -53,9 +87,11 @@ angular.module('SamoaApp', ['ngMaterial', 'ui.router', 'md.data.table'])
                 $log.debug("Product Master click event is done");
             }
             else if (event == 'INFRAESTRUCTURE') {
+                $state.go('infraestructure');
                 $log.debug("Infraestructure Management click event is done");
             }
             else if (event == 'CANBUS') {
+                $state.go('canbus');
                 $log.debug("Can Bus Management click event is done");
             }
             else if (event == 'VISUALIZE') {
@@ -379,4 +415,13 @@ angular.module('SamoaApp', ['ngMaterial', 'ui.router', 'md.data.table'])
             console.log('page: ', page);
             console.log('limit: ', limit);
         };
+
+        // footer clock
+        var tick = function() {
+            $scope.clock = Date.now();
+        };
+
+        tick();
+
+        $interval(tick, 1000);
     }]);

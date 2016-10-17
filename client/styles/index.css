@@ -60,7 +60,8 @@
 
 /* Workbench bar style*/
 #workbench {
-    background-color: rgb(200, 200, 200);
+    /*background-color: rgb(200, 200, 200);*/
+    background-color: white;
 }
 
 /* Footer bar style*/

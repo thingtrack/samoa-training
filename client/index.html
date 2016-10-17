@@ -179,16 +179,22 @@
 
             <!--- WORKBENCH BAND-->
             <div id="containerbar" layout="column" layout-padding flex>
+                <!--- Main container band-->
                 <md-content id="workbench" ui-view="content" flex>
-
                 </md-content>
+                <!--- End main container band-->
 
+                <!--- Toobar container band-->
                 <div id="footerbar">
                     <md-toolbar>
                         <div class="md-toolbar-tools">
+                            <p class="md-body-1">Samoa Copyright®</p>
+                            <span flex></span>
+                            <p class="md-caption">{{ clock  | date: 'dd.MM.y hh:mm:ss a'}}</p>
                         </div>
                     </md-toolbar>
                 </div>
+                <!--- End toobar container band-->
             </div>
             <!--- END WORKBENCH BAND-->
 
@@ -224,6 +230,9 @@
 
         <!-- Application javascript packages  -->
         <script src="app/js/index.js"></script>
+        <script src="app/modules/user/user-controller.js"></script>
         <script src="app/modules/product/product-controller.js"></script>
+        <script src="app/modules/infraestructure/infraestructure-controller.js"></script>
+        <script src="app/modules/canbus/canbus-controller.js"></script>
     </body>
 </html>
