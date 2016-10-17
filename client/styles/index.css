@@ -1,56 +1,55 @@
 /* Header bar style*/
 #logo {
-	width: 220px;
-	background-color: white;
-	padding-top: 15px;
+    width: 220px;
+    background-color: white;
+    padding-top: 15px;
 }
 
 #logo > img {
-	width: 200px;
+    width: 200px;
 }
 
 #headerbar {
-	background-color: white;
-	padding: 8px;
+    background-color: white;
+    padding: 8px;
 }
 
 .avatar {
-  	width: 40px;
-  	min-width: 40px;
-	height: 40px;
-	line-height: 40px;
-	margin: 0 8px 0 0;
-	border-radius: 50%;
-	font-size: 17px;
-	font-weight: 500;
-	text-align: center;
-	color: #FFFFFF; 
+    width: 40px;
+    min-width: 40px;
+    height: 40px;
+    line-height: 40px;
+    margin: 0 8px 0 0;
+    border-radius: 50%;
+    font-size: 17px;
+    font-weight: 500;
+    text-align: center;
+    color: #FFFFFF;
 }
 
 .toolbar-separator {
     height: 64px;
     width: 1px;
-    background: rgba(0, 0, 0, 0.12); 
+    background: rgba(0, 0, 0, 0.12);
 }
 
-
 /* Sidebar bar style*/
-#sidebar {	
-	width: 220px;
+#sidebar {
+    width: 220px;
 }
 
 #sidebar-header {
-	height : 50px;
-	background-color: white;
+    height: 50px;
+    background-color: white;
 }
 
 #sidebar-content {
-	background-color: white;
+    background-color: white;
 }
 
 #sidebar-footer {
-	height : 50px;
-	background-color: white;
+    height: 50px;
+    background-color: white;
 }
 
 .md-grid-item-content md-icon {
@@ -61,16 +60,16 @@
 
 /* Workbench bar style*/
 #workbench {
-	background-color: rgb(200,200,200);
+    background-color: rgb(200, 200, 200);
 }
 
 /* Footer bar style*/
 #footerbar {
-	background-color: white;
-	padding: 8px;
+    background-color: white;
+    /*padding: 8px;*/
 }
 
 /* Quick bar style*/
 .quick-panel {
-	height: 176px;	
+    height: 176px;
 }
