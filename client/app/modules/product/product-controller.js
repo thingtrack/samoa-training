@@ -209,7 +209,23 @@ angular.module('SamoaApp')
         };
 
         $scope.addStuff = function (event) {
+            var product = {};
 
+            $mdDialog.show({
+                controller         : 'ProductFormController',
+                controllerAs       : 'vm',
+                locals             : {
+                    product: product
+                },
+                templateUrl        : 'app/modules/product/form/product-form-template.html',
+                parent             : angular.element($document.body),
+                targetEvent        : event,
+                clickOutsideToClose: true
+            }).then(function(result){
+                console.log('Product ' + product.name + " added");
+            }, function() {
+                console.log("Operation canceled");
+            });
         };
 
         $scope.editStuff = function (event) {
