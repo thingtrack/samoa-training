@@ -74,3 +74,15 @@
 .quick-panel {
     height: 176px;
 }
+
+/* Grid style*/
+md-toolbar.md-table-toolbar form > input {
+    width: 100%;
+    margin: 20px;
+    border: none;
+    color: rgba(0, 0, 0, 0.87);
+}
+
+md-toolbar.md-table-toolbar form > input:focus{
+    outline: none;
+}
