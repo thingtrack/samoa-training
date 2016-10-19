@@ -1,4 +1,4 @@
-angular.module('SamoaApp', ['ngMaterial', 'ui.router', 'md.data.table'])
+angular.module('SamoaApp', ['ngMaterial', 'ui.router', 'md.data.table', 'lbServices'])
     .config(['$stateProvider', '$mdThemingProvider', function ($stateProvider, $mdThemingProvider) {
         'use strict';
 

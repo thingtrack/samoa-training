@@ -1,15 +1,15 @@
 angular.module('SamoaApp')
-    .controller('ProductFormController', ['$scope', '$log', '$mdDialog', 'product', function ($scope, $log, $mdDialog, product) {
+    .controller('InfraestructureFormController', ['$scope', '$log', '$mdDialog', 'infraestructure', function ($scope, $log, $mdDialog, infraestructure) {
         'use strict';
 
-        var vm = this;
+         var vm = this;
 
         // initialize form bound data
-        vm.product = {};
+        vm.infraestructure = {};
 
         // bound select user if is defined
-        if (angular.isDefined(product))
-            vm.product = product;
+        if (angular.isDefined(infraestructure))
+            vm.infraestructure = infraestructure;
 
         // Form event Handlers
         vm.saveDialog = saveDialog;
@@ -22,4 +22,4 @@ angular.module('SamoaApp')
         function cancelDialog() {
             $mdDialog.cancel();
         }
-    }]);
+}]);
