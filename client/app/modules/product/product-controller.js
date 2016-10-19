@@ -33,7 +33,7 @@ angular.module('SamoaApp')
         };
 
         $scope.getDesserts = function() {
-            $scope.desserts = {
+            var values = {
                 "count": 9,
                 "data": [
                     {
@@ -200,6 +200,8 @@ angular.module('SamoaApp')
                     }
                 ]
             };
+
+            $scope.desserts = JSON.parse(angular.toJson(values))
         };
 
         $scope.getDesserts();

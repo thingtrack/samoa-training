@@ -16,7 +16,7 @@ angular.module('SamoaApp')
         vm.cancelDialog = cancelDialog;
 
         function saveDialog() {
-            $mdDialog.hide(product);
+            $mdDialog.hide(infraestructure);
         }
 
         function cancelDialog() {

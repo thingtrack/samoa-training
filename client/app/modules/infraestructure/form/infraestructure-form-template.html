@@ -1,4 +1,4 @@
-<md-dialog class="compose-dialog" aria-label="Product form">
+<md-dialog class="compose-dialog" aria-label="Infraestructure form">
     <form class="md-inline-form">
         <md-toolbar class="md-accent md-hue-2">
             <div class="md-toolbar-tools" layout="row" layout-align="space-between center">
@@ -25,10 +25,9 @@
                 <input ng-model="vm.infraestructure.volume" type="number">
             </md-input-container>
 
-            <md-input-container class="md-block">
-                <label>Active</label>
-                <input ng-model="vm.infraestructure.active" type="boolean">
-            </md-input-container>
+            <md-switch ng-model="vm.infraestructure.active">
+                Status
+            </md-switch>
         </md-dialog-content>
 
         <md-dialog-actions layout="row" layout-align="space-between center">

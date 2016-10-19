@@ -66,7 +66,7 @@ angular.module('SamoaApp')
         };
 
         $scope.addStuff = function (event) {
-            var infraestructure = {};
+            var infraestructure = {active: true};
 
             $mdDialog.show({
                 controller         : 'InfraestructureFormController',

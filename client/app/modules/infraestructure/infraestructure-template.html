@@ -2,7 +2,7 @@
     <!-- table toolbar -->
     <md-toolbar class="md-table-toolbar md-default" ng-hide="(options.rowSelection && selected.length) || filter.show">
         <div class="md-toolbar-tools">
-            <span>Tanks</span>
+            <span>Infraestructure</span>
             <div flex></div>
             <md-button class="md-icon-button" ng-click="loadStuff()()">
                 <md-tooltip md-direction="botton">Refresh</md-tooltip>
@@ -59,7 +59,7 @@
                 <th md-column md-order-by="code"><span>Code</span></th>
                 <th md-column md-order-by="description"><span>Description</span></th>
                 <th md-column md-numeric md-order-by="volume" md-desc><span>Volume</span></th>
-                <th md-column md-boolean md-order-by="active"><span>Active</span></th>
+                <th md-column md-checkbox md-order-by="active"><span>Status</span></th>
             </tr>
             </thead>
             <tbody md-body>
@@ -70,8 +70,14 @@
                 ng-repeat="tank in tanks | filter: query.filter | orderBy: query.order | limitTo: query.limit : (query.page -1) * query.limit">
                 <td md-cell>{{tank.code}}</td>
                 <td md-cell>{{tank.description}}</td>
-                <td md-cell>{{tank.volume | number: 5}}</td>
-                <td md-cell>{{tank.active}}</td>
+                <td md-cell>{{tank.volume | number: 2}}</td>
+                <!--<td md-cell>{{tank.active}}</td>-->
+                <td md-cell>
+                    <md-tooltip md-direction="left" ng-show="tank.active">Active</md-tooltip>
+                    <md-tooltip md-direction="left" ng-show="!tank.active">Unactive</md-tooltip>
+                    <md-switch ng-disabled="true" aria-label="Disabled switch" ng-model="tank.active">
+                    </md-switch>
+                </td>
             </tr>
             </tbody>
         </table>
@@ -81,7 +87,7 @@
     <md-table-pagination md-limit="query.limit"
                          md-limit-options="limitOptions"
                          md-page="query.page"
-                         md-total="{{tanks.count}}"
+                         md-total="{{tanks.length}}"
                          md-page-select="options.pageSelect"
                          md-boundary-links="options.boundaryLinks"
                          md-on-paginate="logPagination">
