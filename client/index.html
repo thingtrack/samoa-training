@@ -14,8 +14,7 @@
 
         <!-- Vendor style sheets -->
         <link type="text/css" rel="stylesheet" href="bower_components/angular-material/angular-material.min.css">
-        <link type="text/css" rel="stylesheet"
-              href="bower_components/angular-material-data-table/dist/md-data-table.min.css"/>
+        <link type="text/css" rel="stylesheet" href="bower_components/angular-material-data-table/dist/md-data-table.min.css"/>
 
         <!-- Application style sheets -->
         <link type="text/css" rel="stylesheet" href="styles/index.css">
@@ -174,17 +173,23 @@
                     </md-list>
                 </md-content>
                 <!--- End Menu Sidebar band-->
+
+                <!--- Footer Sidebar band-->
+                <!--<div id="sidebar-header">
+                            Footer Sidebar
+                        </div>-->
+                <!--- End Footer Sidebar band-->
             </div>
             <!--- END SIDEBAR BAND-->
 
             <!--- WORKBENCH BAND-->
             <div id="containerbar" layout="column" layout-padding flex>
-                <!--- Main container band-->
+                <!--- workbench band-->
                 <md-content id="workbench" ui-view="content" flex>
                 </md-content>
                 <!--- End main container band-->
 
-                <!--- Toobar container band-->
+                <!--- footerbar container band-->
                 <div id="footerbar">
                     <md-toolbar>
                         <div class="md-toolbar-tools">

@@ -4,7 +4,8 @@ angular.module('SamoaApp', ['ngMaterial', 'ui.router', 'md.data.table', 'lbServi
 
         // configure default application theme
         $mdThemingProvider.theme('default')
-            .primaryPalette('indigo');
+            .primaryPalette('indigo')
+            .accentPalette('pink');
 
         // configure application routes
         $stateProvider
@@ -54,10 +55,10 @@ angular.module('SamoaApp', ['ngMaterial', 'ui.router', 'md.data.table', 'lbServi
                 }
             });
     }])
-    .controller('sampleController', ['$mdEditDialog', '$q', '$scope', '$log', '$timeout', '$mdSidenav', '$state', '$interval', function ($mdEditDialog, $q, $scope, $log, $timeout, $mdSidenav, $state, $interval) {
+    .controller('sampleController', ['$rootScope', '$mdEditDialog', '$q', '$scope', '$log', '$timeout', '$mdSidenav', '$state', '$interval', function ($rootScope, $mdEditDialog, $q, $scope, $log, $timeout, $mdSidenav, $state, $interval) {
         'use strict';
 
-        $scope.customerName = 'Miguel Salinas';
+        $scope.customerName = 'Ivan Fernandez';
 
         ////////// Toolbar event handlers //////////
         $scope.alarm = function () {

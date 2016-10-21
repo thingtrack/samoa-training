@@ -4,6 +4,10 @@ angular.module('SamoaApp')
 
         var bookmark;
 
+        /*$('').bind('click', function() {
+
+        });*/
+
         $scope.filter = {
             options: {
                 debounce: 500
@@ -79,7 +83,17 @@ angular.module('SamoaApp')
                 targetEvent        : event,
                 clickOutsideToClose: true
             }).then(function(result){
-                console.log('Infraestructure ' + infraestructure.code + " added");
+                Tank.updateOrCreate(infraestructure)
+                    .$promise
+                    .then(function(infraestructure, responseHeaders) {
+                       console.log('Infraestructure ' + infraestructure.code + " added");
+
+                        getTanks();
+                    },
+                    function(httpResponse) {
+                        var error = httpResponse.data.error;
+                        console.log('Error updating tank - ' + error.status + ": " + error.message);
+                    });
             }, function() {
                 console.log("Operation canceled");
             });
@@ -103,13 +117,39 @@ angular.module('SamoaApp')
                 clickOutsideToClose: true
             }).then(function(result){
                 console.log('Infraestructure ' + infraestructure.code + " updated");
+
+                // update tank
+                Tank.updateOrCreate(infraestructure)
+                    .$promise
+                    .then(function(infraestructure, responseHeaders) {
+                        console.log('Infraestructure ' + infraestructure.code + " added");
+
+                        getTanks();
+                    },
+                    function(httpResponse) {
+                        var error = httpResponse.data.error;
+                        console.log('Error updating tank - ' + error.status + ": " + error.message);
+                    });
+
             }, function() {
                 console.log("Operation canceled");
             });
         };
 
         $scope.removeStuff = function (event) {
-            var entity = $scope.selected;
+            $scope.selected.forEach(function(infraestructure) {
+                Tank.removeById({id: infraestructure.id})
+                    .$promise
+                    .then(function(infraestructure, responseHeaders) {
+                        console.log('Infraestructure ' + infraestructure.code + " deleted");
+
+                        getTanks();
+                    },
+                    function(httpResponse) {
+                        var error = httpResponse.data.error;
+                        console.log('Error deleting infraestructure - ' + error.status + ": " + error.message);
+                    });
+            });
         };
 
         $scope.toggleLimitOptions = function () {
