@@ -138,7 +138,22 @@ angular.module('SamoaApp')
 
         $scope.removeStuff = function (event) {
             $scope.selected.forEach(function(infraestructure) {
-                Tank.removeById({id: infraestructure.id})
+                infraestructure.active = false;
+
+                // update tank
+                Tank.updateOrCreate(infraestructure)
+                    .$promise
+                    .then(function(infraestructure, responseHeaders) {
+                        console.log('Infraestructure ' + infraestructure.code + " added");
+
+                        getTanks();
+                    },
+                    function(httpResponse) {
+                        var error = httpResponse.data.error;
+                        console.log('Error updating tank - ' + error.status + ": " + error.message);
+                    });
+
+                /*Tank.removeById({id: infraestructure.id})
                     .$promise
                     .then(function(infraestructure, responseHeaders) {
                         console.log('Infraestructure ' + infraestructure.code + " deleted");
@@ -148,7 +163,7 @@ angular.module('SamoaApp')
                     function(httpResponse) {
                         var error = httpResponse.data.error;
                         console.log('Error deleting infraestructure - ' + error.status + ": " + error.message);
-                    });
+                    });*/
             });
         };
 
