@@ -13,11 +13,11 @@
   		<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">  		
 
   		<!-- Vendor style sheets -->
-  		<link type="text/css" rel="stylesheet" href="bower_components/angular-material/angular-material.min.css">      
+  		<link type="text/css" rel="stylesheet" href="bower_components/angular-material/angular-material.min.css">
   		<link type="text/css" rel="stylesheet" href="bower_components/angular-material-data-table/dist/md-data-table.min.css"/>
 
 		<!-- Application style sheets -->
-		<link type="text/css" rel="stylesheet" href="styles/index.css">        		
+		<link type="text/css" rel="stylesheet" href="styles/index.css">
   	</head>
   	<body layout="column" ng-app="SamoaApp" ng-controller="sampleController" ng-cloak>
   		<!--- HEADER BAND-->
@@ -30,15 +30,15 @@
 
 			<!--- Toolbar band-->
 			<md-toolbar flex>
-	      		<div class="md-toolbar-tools">		        
+	      		<div class="md-toolbar-tools">
 			        <span flex></span>
-					
+
 					<md-menu-bar>
 						<md-tooltip md-direction="botton">User Profile</md-tooltip>
-						<md-menu md-position-mode="left bottom">			
+						<md-menu md-position-mode="left bottom">
 		                    <md-button ng-click="$mdOpenMenu()" aria-label="User settings">
 		                        <div layout="row" layout-align="space-between center">
-		                            <img md-menu-align-target class="avatar" src="assets/images/profile.jpg">		                            
+		                            <img md-menu-align-target class="avatar" src="assets/images/profile.jpg">
 		                            <span>{{customerName}}</span>
 		                            <md-icon>keyboard_arrow_down</md-icon>
 		                        </div>
@@ -48,7 +48,7 @@
 		                        <md-menu-item>
 		                            <md-icon>person</md-icon>
 		                            <md-button ng-click="profile()">My Profile</md-button>
-		                        </md-menu-item>		                       
+		                        </md-menu-item>
 		                        <md-menu-divider></md-menu-divider>
 		                        <md-menu-item>
 		                            <md-icon>exit_to_app</md-icon>
@@ -72,9 +72,9 @@
         			<div class="toolbar-separator"></div>
 
 					<md-button class="md-icon-button" ng-click="toggleRight()" ng-hide="isOpenRight()" aria-label="Chat view">
-						<md-tooltip md-direction="botton">Right Side Bar</md-tooltip>	
+						<md-tooltip md-direction="botton">Right Side Bar</md-tooltip>
             			<md-icon>reorder</md-icon>
-        			</md-button>      			
+        			</md-button>
 			    </div>
 	    	</md-toolbar>
 	    	<!--- End Toolbar band-->
@@ -99,10 +99,10 @@
 				        		<md-tooltip md-direction="right">User list</md-tooltip>
 				          		<md-icon>people</md-icon>
 				            	<div class="md-grid-text">Users</div>
-				          	</md-button>				
+				          	</md-button>
 					    </md-list-item>
         				<!--<md-list-item>
-							<md-tooltip md-direction="right">User list</md-tooltip>        				
+							<md-tooltip md-direction="right">User list</md-tooltip>
       						<md-icon>people</md-icon>
       						<p>Users</p>
     					</md-list-item>-->
@@ -111,22 +111,22 @@
 				        		<md-tooltip md-direction="right">Product list</md-tooltip>
 				          		<md-icon>invert_colors</md-icon>
 				            	<div class="md-grid-text">Products</div>
-				          	</md-button>				
-					    </md-list-item>    					
+				          	</md-button>
+					    </md-list-item>
 						<!--<md-list-item>
-							<md-tooltip md-direction="right">Product list</md-tooltip>						
+							<md-tooltip md-direction="right">Product list</md-tooltip>
       						<md-icon>invert_colors</md-icon>
       						<p>Products</p>
-    					</md-list-item>--> 
+    					</md-list-item>-->
         				<md-list-item>
 				        	<md-button class="md-grid-item-content" ng-click="menuItemClick('INFRAESTRUCTURE')">
 				        		<md-tooltip md-direction="right">Manage Infraestructure</md-tooltip>
 				          		<md-icon>build</md-icon>
 				            	<div class="md-grid-text">Infraestructure</div>
-				          	</md-button>				
-					    </md-list-item>     					   					
+				          	</md-button>
+					    </md-list-item>
     					<!--<md-list-item ng-click="null">
-							<md-tooltip md-direction="right">Manage Infraestructure</md-tooltip>    					
+							<md-tooltip md-direction="right">Manage Infraestructure</md-tooltip>
       						<md-icon>build</md-icon>
       						<p>Infraestructure</p>
     					</md-list-item>-->
@@ -135,14 +135,14 @@
 				        		<md-tooltip md-direction="right">Manage CAN bus</md-tooltip>
 				          		<md-icon>settings_input_svideo</md-icon>
 				            	<div class="md-grid-text">CAN bus</div>
-				          	</md-button>				
-					    </md-list-item>     					
+				          	</md-button>
+					    </md-list-item>
     					<!--<md-list-item>
-							<md-tooltip md-direction="right">Manage CAN bus</md-tooltip>    					
+							<md-tooltip md-direction="right">Manage CAN bus</md-tooltip>
       						<md-icon>settings_input_svideo</md-icon>
       						<p>CAN bus</p>
     					</md-list-item>-->
-    					<md-divider ></md-divider>     					
+    					<md-divider ></md-divider>
 						<md-subheader class="md-no-sticky">Management Options</md-subheader>
 						<div>
 	        				<md-list-item>
@@ -150,10 +150,10 @@
 					        		<md-tooltip md-direction="right">Visualize Infraestructure</md-tooltip>
 					          		<md-icon>desktop_mac</md-icon>
 					            	<div class="md-grid-text">Visualize</div>
-					          	</md-button>				
-						    </md-list-item> 						
+					          	</md-button>
+						    </md-list-item>
 	        				<!--<md-list-item>
-								<md-tooltip md-direction="right">Visualize Infraestructure</md-tooltip>	        				
+								<md-tooltip md-direction="right">Visualize Infraestructure</md-tooltip>
 	          					<md-icon>desktop_mac</md-icon>
 	          					<p>Visualize</p>
 	        				</md-list-item>-->
@@ -162,8 +162,8 @@
 					        		<md-tooltip md-direction="right">Manage Orders</md-tooltip>
 					          		<md-icon>flash_on</md-icon>
 					            	<div class="md-grid-text">Orders</div>
-					          	</md-button>				
-						    </md-list-item>         				
+					          	</md-button>
+						    </md-list-item>
 	        				<!--<md-list-item>
 	        					<md-tooltip md-direction="right">Manage Orders</md-tooltip>
 	          					<md-icon>flash_on</md-icon>
@@ -183,7 +183,7 @@
 			<!--- END SIDEBAR BAND-->
 
 			<!--- WORKBENCH BAND-->
-			<div id="containerbar" layout="column" layout-padding flex> 
+			<div id="containerbar" layout="column" layout-padding flex>
 				<md-content id="workbench" flex>
 					<md-card md-whiteframe="9">
 						<!-- table toolbar -->
@@ -196,7 +196,7 @@
 	            				</md-button>
 	          				</div>
 	        			</md-toolbar>
-	        
+
 	        			<md-toolbar class="md-table-toolbar alternate" ng-show="options.rowSelection && selected.length">
 	          				<div class="md-toolbar-tools">
 	            				<span>{{selected.length}} {{selected.length > 1 ? 'items' : 'item'}} selected</span>
@@ -205,10 +205,10 @@
 
 						<!-- table container -->
 						<md-table-container>
-					          	<table md-table 
-					          	       md-row-select="options.rowSelection" 
-					          	       multiple="{{options.multiSelect}}" 
-					          	       ng-model="selected" 
+					          	<table md-table
+					          	       md-row-select="options.rowSelection"
+					          	       multiple="{{options.multiSelect}}"
+					          	       ng-model="selected"
 					          		   md-progress="promise">
 						            <thead ng-if="!options.decapitate" md-head md-order="query.order" md-on-reorder="logOrder">
 						              	<tr md-row>
@@ -228,11 +228,11 @@
 						              	</tr>
 						            </thead>
 						            <tbody md-body>
-						              	<tr md-row 
-						              	    md-select="dessert" 
-						              	    md-on-select="logItem" 
-						              	    md-auto-select="options.autoSelect" 
-						              	    ng-disabled="dessert.calories.value > 400" 
+						              	<tr md-row
+						              	    md-select="dessert"
+						              	    md-on-select="logItem"
+						              	    md-auto-select="options.autoSelect"
+						              	    ng-disabled="dessert.calories.value > 400"
 						              	    ng-repeat="dessert in desserts.data | filter: filter.search | orderBy: query.order | limitTo: query.limit : (query.page -1) * query.limit">
 						                	<td md-cell>{{dessert.name}}</td>
 						                	<td md-cell>
@@ -256,12 +256,12 @@
 	        			</md-table-container>
 
 						<!-- table footer -->
-	        			<md-table-pagination md-limit="query.limit" 
-	        			                     md-limit-options="limitOptions" 
-	        			                     md-page="query.page" 
-	        			                     md-total="{{desserts.count}}" 
-	        			                     md-page-select="options.pageSelect" 
-	        			                     md-boundary-links="options.boundaryLinks" 
+	        			<md-table-pagination md-limit="query.limit"
+	        			                     md-limit-options="limitOptions"
+	        			                     md-page="query.page"
+	        			                     md-total="{{desserts.count}}"
+	        			                     md-page-select="options.pageSelect"
+	        			                     md-boundary-links="options.boundaryLinks"
 	        			                     md-on-paginate="logPagination">
 	        			</md-table-pagination>
 	        		</md-card>
@@ -279,7 +279,7 @@
 		          		Close Sidenav Right
 		        	</md-button>
 		      	</md-content>
-			</md-sidenav> 			
+			</md-sidenav>
 			<!-- END QUICK PANEL BAND-->
 		</div>
 
@@ -298,6 +298,6 @@
 		<script type="text/javascript" src="bower_components/angular-material-data-table/dist/md-data-table.min.js"></script>
 
 		<!-- Application javascript packages  -->
-		<script src="app/js/index.js"></script>  	
+		<script src="app/js/index.js"></script>
   	</body>
 </html>
