@@ -9,7 +9,8 @@
   "properties": {
     "code": {
       "type": "string",
-      "required": true
+      "required": true,
+      "description": "Código Tanque"
     },
     "description": {
       "type": "string",

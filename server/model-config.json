@@ -43,5 +43,9 @@
   "Stock": {
     "dataSource": "samoadb",
     "public": true
-  }
+  },
+    "StockManager": {
+        "dataSource": false,
+        "public": true
+    }
 }
