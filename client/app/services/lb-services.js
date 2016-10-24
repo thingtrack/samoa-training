@@ -7,7 +7,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
   //   import lbServices from './lb-services';
   //   angular.module('app', [lbServices]);
   //
-  module.exports = "lbServices";
+    module.exports = "lbServices";
 }
 
 (function(window, angular, undefined) {
