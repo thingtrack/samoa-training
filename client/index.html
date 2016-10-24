@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="SamoaApp">
     <head>
         <meta charset="UTF-8">
         <title>Samoa Training</title>
@@ -19,7 +19,7 @@
         <!-- Application style sheets -->
         <link type="text/css" rel="stylesheet" href="styles/index.css">
     </head>
-    <body layout="column" ng-app="SamoaApp" ng-controller="sampleController" ng-cloak>
+    <body layout="column" ng-controller="sampleController" ng-cloak>
         <!--- HEADER BAND-->
         <div id="headerbar" layout="row">
             <!--- Logo band-->
@@ -233,11 +233,15 @@
         <script type="text/javascript" src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
         <script type="text/javascript" src="bower_components/angular-material-data-table/dist/md-data-table.min.js"></script>
 
+        <script src="/socket.io/socket.io.js"></script>
+
         <!-- Application services packages  -->
         <script src="app/services/lb-services.js"></script>
 
         <!-- Application javascript packages  -->
         <script src="app/js/index.js"></script>
+        <script src="app/js/socket.js"></script>
+        <script src="app/js/pubsub.js"></script>
         <script src="app/modules/user/user-controller.js"></script>
         <script src="app/modules/product/product-controller.js"></script>
         <script src="app/modules/product/form/product-form.controller.js"></script>

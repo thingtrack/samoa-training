@@ -1,12 +1,9 @@
 angular.module('SamoaApp')
-    .controller('InfraestructureController', ['$scope', '$log', '$timeout', '$mdEditDialog', '$mdDialog', '$q', '$document', 'Tank', function ($scope, $log, $timeout, $mdEditDialog, $mdDialog, $q, $document, Tank) {
+    .controller('InfraestructureController', ['$scope', '$log', '$timeout', '$mdEditDialog', '$mdDialog', '$q', '$document', 'Tank', 'PubSub',
+        function ($scope, $log, $timeout, $mdEditDialog, $mdDialog, $q, $document, Tank, PubSub) {
         'use strict';
 
         var bookmark;
-
-        /*$('').bind('click', function() {
-
-        });*/
 
         $scope.filter = {
             options: {
@@ -36,7 +33,61 @@ angular.module('SamoaApp')
             page: 1
         };
 
+        var onTankCreate = function (data) {
+            if($scope.tanks===undefined)
+                $scope.tanks=[];
+            $scope.tanks.push(data);
+            PubSub.subscribe({
+                collectionName: 'Tank',
+                method : 'PUT',
+                modelId : data.id
+            }, onTankUpdate);
+
+            PubSub.subscribe({
+                collectionName: 'Tank',
+                method : 'DELETE',
+                modelId : data.id
+            }, onTankDelete);
+            //Logic for callback function on new orders
+        };
+
+        var onTankUpdate = function(data) {
+            var exists=true;
+            var i=0;
+            while(exists){
+                if($scope.tanks[i].id==data.id){
+                    $scope.tanks[i]=data;
+                    exists=false;
+                }else{
+                    i++;
+                }
+            }
+            //Logic for callback function on updated orders
+        };
+
+        var onTankDelete = function(id) {
+            var exists=true;
+            var i=0;
+            while(exists){
+                if($scope.tanks[i].id==id){
+                    $scope.tanks.splice(i,1);
+                    exists=false;
+                }else{
+                    i++;
+                }
+            }
+        };
+
+        //Subscribe to orders methods here..
+        PubSub.subscribe({
+            collectionName: 'Tank',
+            method : 'POST'
+        }, onTankCreate);
+
         function getTanks() {
+            var deferred = $q.defer();
+            $scope.promise = deferred.promise;
+
             Tank.find()
                 .$promise
                 .then(function(tanks, responseHeaders) {
@@ -45,28 +96,37 @@ angular.module('SamoaApp')
                     }
 
                     $log.info('Query ' + tanks.length + ' tanks');
+
+                    for(var i=0; i<tanks.length; i++){
+                        PubSub.subscribe({
+                            collectionName: 'Tank',
+                            method : 'PUT',
+                            modelId : tanks[i].id
+                        }, onTankUpdate);
+
+                        PubSub.subscribe({
+                            collectionName: 'Tank',
+                            method : 'DELETE',
+                            modelId : tanks[i].id
+                        }, onTankDelete);
+                    }
+
+                    deferred.resolve();
                 },
                 function(httpResponse) {
                     var error = httpResponse.data.error;
                     console.log('Error updating driver - ' + error.status + ": " + error.message);
+
+                    deferred.resolve();
                 });
         }
 
-        getTanks();
+        // Initial load data list
+        //getTanks();
 
         // table event handlers
         $scope.loadStuff = function () {
-            // fire table progress
-            var deferred = $q.defer();
-            $scope.promise = deferred.promise;
-
             getTanks();
-
-            deferred.resolve();
-
-            /*$scope.promise = $timeout(function () {
-             // loading
-             }, 2000);*/
         };
 
         $scope.addStuff = function (event) {
@@ -86,13 +146,22 @@ angular.module('SamoaApp')
                 Tank.updateOrCreate(infraestructure)
                     .$promise
                     .then(function(infraestructure, responseHeaders) {
-                       console.log('Infraestructure ' + infraestructure.code + " added");
+                        // log operation data list
+                        console.log('Infraestructure ' + infraestructure.code + " added");
 
-                        getTanks();
+                        // unselect data list
+                        $scope.selected = [];
                     },
                     function(httpResponse) {
+                        // error operation data list
                         var error = httpResponse.data.error;
-                        console.log('Error updating tank - ' + error.status + ": " + error.message);
+                        console.log('Error adding tank - ' + error.status + ": " + error.message);
+
+                        // refresh data list
+                        //getTanks();
+
+                        // unselect data list
+                        $scope.selected = [];
                     });
             }, function() {
                 console.log("Operation canceled");
@@ -116,21 +185,25 @@ angular.module('SamoaApp')
                 targetEvent        : event,
                 clickOutsideToClose: true
             }).then(function(result){
-                console.log('Infraestructure ' + infraestructure.code + " updated");
-
-                // update tank
                 Tank.updateOrCreate(infraestructure)
                     .$promise
                     .then(function(infraestructure, responseHeaders) {
-                        console.log('Infraestructure ' + infraestructure.code + " added");
+                        // log operation data list
+                        console.log('Infraestructure ' + infraestructure.code + " updated");
 
-                        getTanks();
+                        // refresh data list
+                        //getTanks();
+
+                        // unselect data list
+                        $scope.selected = [];
                     },
                     function(httpResponse) {
+                        // error operation data list
                         var error = httpResponse.data.error;
                         console.log('Error updating tank - ' + error.status + ": " + error.message);
-                    });
 
+                        $scope.selected = [];
+                    });
             }, function() {
                 console.log("Operation canceled");
             });
@@ -140,30 +213,25 @@ angular.module('SamoaApp')
             $scope.selected.forEach(function(infraestructure) {
                 infraestructure.active = false;
 
-                // update tank
-                Tank.updateOrCreate(infraestructure)
+                Tank.destroyById({id:infraestructure.id})
                     .$promise
                     .then(function(infraestructure, responseHeaders) {
-                        console.log('Infraestructure ' + infraestructure.code + " added");
+                        // log operation data list
+                        console.log('Infraestructure ' + infraestructure.code + " unactivated");
 
-                        getTanks();
+                        // refresh data list
+                        //getTanks();
+
+                        // unselect data list
+                        $scope.selected = [];
                     },
                     function(httpResponse) {
+                        // error operation data list
                         var error = httpResponse.data.error;
-                        console.log('Error updating tank - ' + error.status + ": " + error.message);
+                        console.log('Error unactivating tank - ' + error.status + ": " + error.message);
+
+                        $scope.selected = [];
                     });
-
-                /*Tank.removeById({id: infraestructure.id})
-                    .$promise
-                    .then(function(infraestructure, responseHeaders) {
-                        console.log('Infraestructure ' + infraestructure.code + " deleted");
-
-                        getTanks();
-                    },
-                    function(httpResponse) {
-                        var error = httpResponse.data.error;
-                        console.log('Error deleting infraestructure - ' + error.status + ": " + error.message);
-                    });*/
             });
         };
 

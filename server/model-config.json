@@ -14,22 +14,23 @@
     ]
   },
   "User": {
-    "dataSource": "db"
+    "dataSource": "samoadb",
+    "public": true
   },
   "AccessToken": {
-    "dataSource": "db",
+    "dataSource": "samoadb",
     "public": false
   },
   "ACL": {
-    "dataSource": "db",
+    "dataSource": "samoadb",
     "public": false
   },
   "RoleMapping": {
-    "dataSource": "db",
+    "dataSource": "samoadb",
     "public": false
   },
   "Role": {
-    "dataSource": "db",
+    "dataSource": "samoadb",
     "public": false
   },
   "Tank": {
@@ -44,8 +45,8 @@
     "dataSource": "samoadb",
     "public": true
   },
-    "StockManager": {
-        "dataSource": false,
-        "public": true
-    }
+  "StockManager": {
+    "dataSource": false,
+    "public": true
+  }
 }

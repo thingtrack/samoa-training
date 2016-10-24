@@ -41,7 +41,9 @@ angular.module('SamoaApp', ['ngMaterial', 'ui.router', 'md.data.table', 'lbServi
                         templateUrl: 'app/modules/infraestructure/infraestructure-template.html',
                         controller: 'InfraestructureController'
                     }
-                }
+                },
+                //Here unsubscribe function must be called to unsubcribe all events on state change
+                onExit: unSubscribeAll
             }).state('canbus', {
                 url: '/canbus',
                 data: {
@@ -101,7 +103,7 @@ angular.module('SamoaApp', ['ngMaterial', 'ui.router', 'md.data.table', 'lbServi
             else if (event == 'ORDERS') {
                 $log.debug("orders Management click event is done");
             }
-        }
+        };
 
         ////////// Quick Panel event handlers //////////
         $scope.toggleLeft = buildDelayedToggler('left');
@@ -168,3 +170,9 @@ angular.module('SamoaApp', ['ngMaterial', 'ui.router', 'md.data.table', 'lbServi
 
         $interval(tick, 1000);
     }]);
+
+//Function for unsubscribing..
+var unSubscribeAll = function(PubSub){
+    //Unsubscribe all listeners..
+    PubSub.unSubscribeAll();
+}
